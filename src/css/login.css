@@ -1,0 +1,204 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  color: #333;
+  line-height: 1.5;
+  padding: 0;
+  height: 100vh; /* Set body to full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for the entire page */
+.min-h-screen {
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full viewport width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Background Color */
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+/* Login Card */
+.max-w-md {
+  width: 100%;
+  max-width: 650px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  flex: 1; /* Allow the card to adjust within the container */
+  max-height: 80vh; /* Prevent the card from growing too tall */
+  overflow-y: auto; /* Allow internal scrolling if content exceeds height */
+}
+
+.max-w-md:hover {
+  transform: translateY(-5px); /* Subtle hover effect */
+}
+
+.space-y-6 {
+  margin-bottom: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Header Text */
+.text-3xl {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+/* Form Styles */
+.space-y-2 {
+  margin-bottom: 0.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.block {
+  display: block;
+}
+
+.relative {
+  position: relative;
+}
+
+/* Input Styles */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  padding-left: 2.5rem; /* Space for left icons */
+  padding-right: 2.5rem; /* Space for right icons (e.g., show/hide) */
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: #111827;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+/* Icon Styling */
+.icon,
+button[type="button"] svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icon:hover,
+button[type="button"] svg:hover {
+  color: #6b7280; /* Darker shade on hover */
+  transform: scale(1.1);
+}
+
+/* Button for toggling password visibility */
+button[type="button"] {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 2rem;
+  height: 1.5rem;
+  accent-color: #3b82f6;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.75rem;
+  width: 50%;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30px;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05); /* Subtle scaling effect */
+}
+
+/* Links */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}
+
+/* Footer Text */
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .max-w-md {
+      padding: 1.5rem;
+  }
+
+  .text-3xl {
+      font-size: 1.5rem;
+  }
+
+  .text-sm {
+      font-size: 0.75rem;
+  }
+
+  button[type="submit"] {
+      width: 100%;
+      font-size: 1.1rem;
+  }
+}
