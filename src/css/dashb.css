@@ -1,0 +1,254 @@
+/* Ensure the body takes up the full screen */
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for the whole dashboard, ensures full height */
+.dashboardContainer {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content wrapper stays centered with a max width */
+.contentWrapper {
+  flex-grow: 1; /* Make the contentWrapper take up remaining space */
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header styling */
+.header {
+  margin-bottom: 2rem;
+}
+
+/* Title and subtitle for header */
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  color: #6b7280;
+}
+
+/* Stats grid for the cards */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Flexbox layout for cards */
+.cardHeader, .cardHeaderWithButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardHeader {
+  padding-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.icon {
+  height: 1rem;
+  width: 1rem;
+  color: #6b7280;
+}
+
+.iconGreen {
+  height: 1rem;
+  width: 1rem;
+  color: #10b981;
+}
+
+.iconRed {
+  height: 1rem;
+  width: 1rem;
+  color: #ef4444;
+}
+
+.statAmount {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Alert box styling */
+.alert {
+  margin-bottom: 2rem;
+  background-color: #fee2e2;
+  border-color: #fecaca;
+}
+
+/* Tabs styling */
+.tabs {
+  margin-top: 1rem;
+}
+
+.tabContent {
+  margin-top: 1rem;
+}
+
+/* Charts container with flexible height */
+.chartContainer {
+  height: 24rem;
+}
+
+.smallChartContainer {
+  height: 16rem;
+}
+
+/* Grid for charts */
+.chartGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .chartGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Budget display container */
+.budgetContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.budgetInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 0.625rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+/* Transaction list display */
+.transactionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transactionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.transactionCategory {
+  font-weight: 500;
+}
+
+.transactionDate {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.expenseAmount {
+  font-weight: 500;
+  color: #ef4444;
+}
+
+.incomeAmount {
+  font-weight: 500;
+  color: #10b981;
+}
+
+/* Categories display */
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.categoryItem {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.categoryName {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.subcategoryList {
+  padding-left: 1rem;
+}
+
+.subcategoryItem {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Report form styling */
+.reportForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .dateInputs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.inputLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.list{
+  display: flex;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+  font-size: 40px;
+}
