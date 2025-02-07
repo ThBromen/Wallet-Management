@@ -15,7 +15,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { Plus, Wallet, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
-import "../css/dashb.css";
 
 const WalletDashboard = () => {
   const [transactions] = useState([

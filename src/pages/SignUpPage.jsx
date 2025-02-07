@@ -1,65 +1,105 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Wallet } from 'lucide-react';
-import '../../src/css/signup.css'; // Ensure the path is correct
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Account created successfully!');
+        navigate('/login');
+      } else {
+        alert(data.msg || 'Signup failed!');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('Something went wrong!');
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex flex-col">
+    <div>
       {/* Navigation */}
-      <nav className="navigation">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              <Wallet className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-800">BromenWallet</span>
-            </div>
-          </div>
+      <nav id="navigationlog">
+        <div onClick={() => navigate('/')}>
+          <Wallet id="nn" />
+          <span id="bb">BromenWallet</span>
         </div>
       </nav>
 
       {/* Sign Up Form */}
-      <div className="flex-1 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-center mb-8">Create Account</h2>
-          <form className="space-y-6">
-            <div>
-              <label className="label">Full Name</label>
-              <input
-                type="text"
-                className="input-field mt-1"
-                placeholder="Enter your full name"
-              />
-            </div>
-            <div>
-              <label className="label">Email</label>
-              <input
-                type="email"
-                className="input-field mt-1"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div>
-              <label className="label">Password</label>
-              <input
-                type="password"
-                className="input-field mt-1"
-                placeholder="Enter your password"
-              />
-            </div>
-            <button type="submit" className="button">
-              Sign Up
-            </button>
-          </form>
-          <p className="mt-4 text-center text-sm text-gray-600">
-            Already have an account?{' '}
-            <button onClick={() => navigate('/login')} className="link-button">
-              Log in
-            </button>
-          </p>
-        </div>
+      <div className="foamsignup">
+        <h2>Create Account</h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <label className="label">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              className="signinput"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="signinput"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="label">Password</label>
+            <input
+              type="password"
+              name="password"
+              className="signinput"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="button">
+            Sign Up
+          </button>
+        </form>
+        <p className="signpar">
+          Already have an account?{' '}
+          <button onClick={() => navigate('/login')} className="link-button">
+            Log in
+          </button>
+        </p>
       </div>
     </div>
   );
