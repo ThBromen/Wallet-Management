@@ -6,7 +6,7 @@ const AboutPage = () => {
 
   return (
     <div className="about-container">
-      <div className="about-content">
+      <div>
         {/* Header */}
         <h2 className="about-title">About BromenWallet</h2>
         <p>
@@ -26,7 +26,7 @@ const AboutPage = () => {
         </p>
 
         {/* Back to Home Button */}
-        <button onClick={() => navigate('/')} className="back-button">
+        <button onClick={() => navigate('/')} className="green-button">
           Back to Home
         </button>
       </div>

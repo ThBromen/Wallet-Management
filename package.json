@@ -5,9 +5,11 @@
   "dependencies": {
     "@radix-ui/react-tabs": "^1.1.2",
     "@testing-library/react": "^16.2.0",
+    "@types/cors": "^2.8.17",
     "@types/react-router-dom": "^5.3.3",
     "@types/recharts": "^1.8.29",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
     "cra-template": "1.2.0",
     "lucide-react": "^0.473.0",
     "react": "^18.3.1",

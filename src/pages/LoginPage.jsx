@@ -8,12 +8,15 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+
+  const [message, setMessage] = useState({ text: "", type: "" }); // State for inline messages
   const navigate = useNavigate();
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setMessage({ text: "", type: "" }); // Reset message before submission
+
     try {
       const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
@@ -24,16 +27,15 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Login successful!");
-        // Store the token in localStorage
+        setMessage({ text: "Login successful! Redirecting...", type: "success" });
         localStorage.setItem("token", data.token);
-        navigate("/dashboard"); // Redirect to dashboard
+        setTimeout(() => navigate("/dashboard"), 1500); // Redirect after delay
       } else {
-        alert(data.msg || "Invalid email or password");
+        setMessage({ text: data.msg || "Invalid email or password", type: "error" });
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("Something went wrong!");
+      setMessage({ text: "Something went wrong!", type: "error" });
     }
   };
 
@@ -50,20 +52,25 @@ const LoginPage = () => {
     <div>
       {/* Navigation */}
       <nav id="navigationlog">
-        <div onClick={() => navigate('/')}>
-          <Wallet id='nn'/>
-          <span id='bb'>BromenWallet</span>
+        <div onClick={() => navigate("/")}>
+          <Wallet id="nn" />
+          <span id="bb">BromenWallet</span>
         </div>
       </nav>
 
       <div className="foamsignup">
         <h2>Please sign in to continue</h2>
+
+        {/* Inline Message Display */}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="label">Email</label>
+            <label htmlFor="email" className="label">
+              Email
+            </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="email"
                 id="email"
@@ -79,9 +86,11 @@ const LoginPage = () => {
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="label">Password</label>
+            <label htmlFor="password" className="label">
+              Password
+            </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
@@ -92,14 +101,26 @@ const LoginPage = () => {
                 placeholder="Enter your password"
                 required
               />
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
+          </div>
+          
+          {message.text && (
+          <div className={`message ${message.type === "success" ? "success" : "error"}`}>
+            {message.text}
+          </div>
+        )}
+          {/* Forgot Password Link */}
+          <div className="text-right">
+            <button type="button" className="forgotPass" onClick={() => navigate("/ForgotPassword")}>
+              Forgot Password?
+            </button>
           </div>
 
           {/* Submit Button */}
@@ -110,9 +131,10 @@ const LoginPage = () => {
             Sign In
           </button>
 
+          {/* Signup Link */}
           <div className="text-center text-sm">
             <span className="text-gray-600">Don't have an account? </span>
-            <button onClick={() => navigate('/signup')} className="link-button">
+            <button onClick={() => navigate("/signup")} className="link-button">
               Sign up
             </button>
           </div>

@@ -56,11 +56,8 @@ const HomePage = () => {
           </button>
         </div>
 
-
-
-
-
         {/* Features Section */}
+        <h1 className='HH'>OUR OBJECTIVES</h1>
         <div id='my-line'>
           <FeatureCard 
             icon={BarChart2}
@@ -103,7 +100,7 @@ const HomePage = () => {
           <Wallet id='nfooter'/>
           <span  id='bfooter'>BromenWallet</span>
           </div >
-          <p className='footerp'>© 2025 Bromen.         All rights reserved.</p>
+          <p className='footerp'>© 2025 Bromen.  All rights reserved.</p>
         </div>
       </footer>
     </div>
